@@ -37,6 +37,7 @@ class HighScoresList implements Countable
     public function add($score): void
     {
         // TODO
+        array_push($this->list, $score);
     }
 
     public function count()
@@ -53,7 +54,7 @@ class HighScoresList implements Countable
     {
         // TODO
 
-        return 0;
+        return max($this->list);
     }
 
     /**
@@ -65,7 +66,7 @@ class HighScoresList implements Countable
     {
         // TODO
 
-        return 0;
+        return end($this->list);
     }
 
     /**
@@ -76,8 +77,13 @@ class HighScoresList implements Countable
     public function topThree(): array
     {
         // TODO
-
-        return [];
+        rsort($this->list);
+        $top3 = array_slice($this->list, 0, 3);
+        $topThree = array();
+        foreach ($top3 as $key => $val) {
+            $topThree[$key] = $val;
+        }
+        return $topThree;
     }
 
     /**
@@ -88,7 +94,13 @@ class HighScoresList implements Countable
     public function topFive(): array
     {
         // TODO
-
-        return [];
+        rsort($this->list);
+        $top5 = array_slice($this->list, 0, 5);
+        $topFive = array();
+        foreach ($top5 as $key => $val) {
+            $topFive[$key] = $val;
+        }
+        
+        return $topFive;
     }
 }
