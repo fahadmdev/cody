@@ -11,7 +11,6 @@
       :items="allLoanApplications"
       :sort-by="['lastNoteByCurrentUser']"
       :sort-desc="[true]"
-      multi-sort
       >
         <template v-slot:item.lastNoteByCurrentUser="{ item }">
            <span>{{ timeSince(new Date(item.lastNoteByCurrentUser).getTime()) }}</span>
